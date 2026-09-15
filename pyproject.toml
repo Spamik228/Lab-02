@@ -1,0 +1,24 @@
+[project]
+name = "lab-02"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Den", email = "denesing15@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.7",
+]
+
+[project.scripts]
+lab-02 = "lab_02:main"
+
+[build-system]
+requires = ["uv_build>=0.12.10,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv.workspace]
+members = [
+    "findex",
+]
