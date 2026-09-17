@@ -45,6 +45,7 @@ WARNING / SECURITY NOTE:
 Never use `pickle.load()` on untrusted or untrusted-source files! 
 Pickle allows execution of arbitrary Python code during deserialization(via __reduce__ exploit vectors). 
 An attacker could construct a malicious file that executes shell commands upon loading.
+
 Індекс підтримує збереження та відновлення у двох форматах (`pickle` та `json`). Заміри проводилися на повному корпусі файлів:
 
 | Format | File Size (MB) | Save Time (s) | Load Time (s) |
