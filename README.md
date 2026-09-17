@@ -41,11 +41,10 @@ Posting(doc_id=0, tf=2, positions=(0, 113))
 ## M3. Persistence Study
 
 ###  Формати збереження індексу (Save / Load Benchmark)
-# WARNING / SECURITY NOTE:
-# Never use `pickle.load()` on untrusted or untrusted-source files!
-# Pickle allows execution of arbitrary Python code during deserialization
-# (via __reduce__ exploit vectors). An attacker could construct a malicious
-# file that executes shell commands upon loading.
+WARNING / SECURITY NOTE:
+Never use `pickle.load()` on untrusted or untrusted-source files! 
+Pickle allows execution of arbitrary Python code during deserialization(via __reduce__ exploit vectors). 
+An attacker could construct a malicious file that executes shell commands upon loading.
 Індекс підтримує збереження та відновлення у двох форматах (`pickle` та `json`). Заміри проводилися на повному корпусі файлів:
 
 | Format | File Size (MB) | Save Time (s) | Load Time (s) |
