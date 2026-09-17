@@ -1,12 +1,11 @@
 import re
 import time
-from lab_02.index import build_index
-from lab_02.pipeline import iter_documents
-from lab_02.search import evaluate_query
+from findex2.index import build_index
+from findex2.pipeline import iter_documents
+from findex2.search import evaluate_query
+from findex2.tokenizer import tokenize
 
 
-def tokenize(text: str) -> list[str]:
-    return re.findall(r"\w+", text.lower())
 
 
 def get_corpus_stream(dataset_path: str):
@@ -14,7 +13,8 @@ def get_corpus_stream(dataset_path: str):
     for numeric_id, doc in enumerate(docs):
         yield {
             "doc_id": numeric_id,
-            "tokens": tokenize(doc.text),
+
+            "tokens": list(tokenize(doc.text)),
             "path": str(doc.path),
             "title": doc.doc_id,
         }

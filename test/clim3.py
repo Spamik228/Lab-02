@@ -3,15 +3,13 @@ import re
 import time
 import tracemalloc
 from pathlib import Path
+from findex2.tokenizer import tokenize
+from findex2.index import build_index
+from findex2.pipeline import iter_documents
+from findex2.search import evaluate_query
+from findex2.store import load, save
 
-from lab_02.index import build_index
-from lab_02.pipeline import iter_documents
-from lab_02.search import evaluate_query
-from lab_02.store import load, save
 
-
-def tokenize(text: str) -> list[str]:
-    return re.findall(r"\w+", text.lower())
 
 
 def get_stream(dataset_path: Path):
@@ -19,7 +17,7 @@ def get_stream(dataset_path: Path):
     for numeric_id, doc in enumerate(docs):
         yield {
             "doc_id": numeric_id,
-            "tokens": tokenize(doc.text),
+            "tokens": list(tokenize(doc.text)),
             "path": str(doc.path),
             "title": doc.doc_id,
         }

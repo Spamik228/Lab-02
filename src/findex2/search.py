@@ -1,7 +1,7 @@
 import argparse
 import time
 from typing import Sequence
-from lab_02.index import InvertedIndex, Posting
+from findex2.index import InvertedIndex, Posting
 
 
 # ==========================================

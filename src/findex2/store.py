@@ -1,7 +1,7 @@
 import json
 import pickle
 from pathlib import Path
-from lab_02.index import DocMeta, InvertedIndex, Posting
+from findex2.index import DocMeta, InvertedIndex, Posting
 
 
 # WARNING / SECURITY NOTE:

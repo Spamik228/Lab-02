@@ -4,13 +4,11 @@ import re
 import time
 import tracemalloc
 from pathlib import Path
+from findex2.tokenizer import tokenize
+from findex2.pipeline import iter_documents
+from findex2.posting_variants import PostingArray, PostingPlain, PostingSlots
 
-from lab_02.pipeline import iter_documents
-from lab_02.posting_variants import PostingArray, PostingPlain, PostingSlots
 
-
-def tokenize(text: str) -> list[str]:
-    return re.findall(r"\w+", text.lower())
 
 
 def get_documents(dataset_path: Path):
@@ -22,7 +20,7 @@ def build_variant_plain(docs):
     doc_lengths: dict[int, int] = {}
 
     for doc_id, doc in enumerate(docs):
-        tokens = tokenize(doc.text)
+        tokens = list(tokenize(doc.text))
         doc_lengths[doc_id] = len(tokens)
 
         positions_map: dict[str, list[int]] = {}
@@ -41,7 +39,7 @@ def build_variant_slots(docs):
     doc_lengths: dict[int, int] = {}
 
     for doc_id, doc in enumerate(docs):
-        tokens = tokenize(doc.text)
+        tokens = list(tokenize(doc.text))
         doc_lengths[doc_id] = len(tokens)
 
         positions_map: dict[str, list[int]] = {}
@@ -60,7 +58,7 @@ def build_variant_array(docs):
     doc_lengths: dict[int, int] = {}
 
     for doc_id, doc in enumerate(docs):
-        tokens = tokenize(doc.text)
+        tokens = list(tokenize(doc.text))
         doc_lengths[doc_id] = len(tokens)
 
         positions_map: dict[str, list[int]] = {}
